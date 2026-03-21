@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adidas — Impossible Is Nothing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --preto:  #080808;
+  --branco: #f5f5f5;
+  --cinza:  #111111;
+  --cinza2: #1c1c1c;
+  --azul:   #00a3e0;
+  --muted:  #555;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--preto);color:var(--branco);overflow-x:hidden;}
+ul{list-style:none;}a{text-decoration:none;color:inherit;}img{display:block;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--azul);}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:68px;padding:0 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,.95);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.05);transition:background .4s;
+}
+header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--azul),transparent);}
+.logo-wrap{display:flex;align-items:center;}
+.logo-wrap img{height:38px;width:auto;filter:invert(1);transition:filter .3s;}
+.logo-wrap img:hover{filter:invert(1) sepia(1) saturate(3) hue-rotate(180deg);}
+nav a{
+  margin-left:36px;font-size:12px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--muted);
+  transition:color .25s;position:relative;padding-bottom:3px;
+}
+nav a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--azul);transform:scaleX(0);transition:transform .3s;}
+nav a:hover{color:var(--branco);}
+nav a:hover::after{transform:scaleX(1);}
+.btn-nav{
+  margin-left:36px;padding:10px 24px;
+  background:var(--azul);color:#fff;
+  font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;
+  border:none;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+  transition:filter .25s,transform .2s;
+}
+.btn-nav:hover{filter:brightness(1.2);transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{height:100vh;min-height:640px;position:relative;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:100px;}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1556906781-9a412961a28c?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;
+  transform:scale(1.04);animation:zoomIn 12s ease-out forwards;
+}
+@keyframes zoomIn{from{transform:scale(1.04)}to{transform:scale(1)}}
+.hero-over{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.97) 35%,rgba(8,8,8,.5) 70%,transparent);}
+.hero-stripes{position:absolute;bottom:0;right:60px;display:flex;gap:8px;align-items:flex-end;height:200px;z-index:1;opacity:.1;}
+.hero-stripes span{display:block;width:26px;background:var(--branco);}
+.hero-stripes span:nth-child(1){height:55%;}
+.hero-stripes span:nth-child(2){height:78%;}
+.hero-stripes span:nth-child(3){height:100%;}
+.hero-body{position:relative;z-index:2;padding:0 80px;max-width:700px;animation:fadeUp .9s ease .3s both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--azul);margin-bottom:20px;}
+.kicker::before{content:'';width:36px;height:1px;background:var(--azul);}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,11vw,150px);line-height:.88;margin-bottom:26px;letter-spacing:1px;}
+.hero-title span{color:var(--azul);}
+.hero-sub{font-size:18px;font-weight:300;color:rgba(245,245,245,.6);line-height:1.7;margin-bottom:44px;max-width:440px;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-p{
+  display:inline-block;padding:16px 44px;background:var(--azul);color:#fff;
+  font-size:12px;font-weight:900;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  transition:filter .25s,transform .2s,box-shadow .25s;
+}
+.btn-p:hover{filter:brightness(1.15);transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,163,224,.4);}
+.btn-g{
+  display:inline-block;padding:15px 44px;background:transparent;color:var(--azul);
+  border:1px solid rgba(0,163,224,.4);font-size:12px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  transition:background .25s,transform .2s;
+}
+.btn-g:hover{background:rgba(0,163,224,.08);transform:translateY(-2px);}
+.hero-scroll{position:absolute;bottom:40px;right:70px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);}
+.hero-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,var(--azul),transparent);animation:scrollLine 2s ease-in-out infinite;}
+@keyframes scrollLine{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── LABELS ── */
+.sec-label{display:inline-flex;align-items:center;gap:12px;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--azul);margin-bottom:18px;}
+.sec-label::before{content:'';width:28px;height:1px;background:var(--azul);}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,6vw,80px);line-height:.95;margin-bottom:22px;}
+.sec-title span{color:var(--azul);}
+
+/* ── ABOUT ── */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--cinza);}
+.about-txt{padding:100px 80px;display:flex;flex-direction:column;justify-content:center;}
+.about-body{color:rgba(245,245,245,.55);font-size:17px;line-height:1.85;font-weight:300;margin-bottom:32px;}
+.about-stats{display:flex;gap:40px;margin-top:8px;}
+.a-stat p:first-child{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--azul);line-height:1;}
+.a-stat p:last-child{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.about-img{
+  overflow:hidden;position:relative;
+  background:url('https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=800&q=80&auto=format&fit=crop') center/cover no-repeat;
+  min-height:500px;
+}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--cinza) 0%,transparent 40%);}
+
+/* ── VIDEO SECTION ── */
+.video-section{background:var(--preto);padding:100px 80px;}
+
+/* ── VIDEO PLAYER ── */
+.video-player{
+  position:relative;width:100%;max-width:1100px;margin:50px auto 0;
+  aspect-ratio:16/9;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.8);
+  cursor:pointer;
+}
+.video-player::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--azul),#005fa3,var(--azul));z-index:-1;border-radius:2px;}
+.video-thumb-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s,filter .4s;filter:brightness(.7);}
+.video-player:hover .video-thumb-img{transform:scale(1.02);filter:brightness(.85);}
+.video-play-overlay{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(8,8,8,.2);transition:background .3s;z-index:2;
+}
+.video-player:hover .video-play-overlay{background:rgba(8,8,8,.05);}
+.play-btn-yt{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(8,8,8,.75);border:2px solid rgba(255,255,255,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s,transform .25s,border-color .25s;
+  padding-left:5px;
+}
+.play-btn-yt::after{content:'▶';font-size:26px;color:#fff;}
+.video-player:hover .play-btn-yt{background:var(--azul);border-color:var(--azul);transform:scale(1.12);}
+.video-caption{text-align:center;margin-top:30px;color:var(--muted);font-size:14px;letter-spacing:2px;text-transform:uppercase;}
+.video-caption strong{color:var(--azul);}
+.video-wrap{
+  position:relative;width:100%;max-width:1100px;margin:50px auto 0;
+  aspect-ratio:16/9;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.8);
+}
+.video-wrap::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--azul),#005fa3,var(--azul));z-index:-1;border-radius:2px;}
+.video-wrap iframe{width:100%;height:100%;border:none;display:block;}
+
+/* ── PRODUTOS ── */
+.produtos{padding:100px 60px;background:var(--cinza);}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:50px;}
+.prod-card{background:var(--preto);overflow:hidden;cursor:pointer;position:relative;transition:transform .3s;}
+.prod-card:hover{transform:translateY(-5px);z-index:2;}
+.prod-img{position:relative;overflow:hidden;aspect-ratio:1/1;}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s;filter:brightness(.8);}
+.prod-card:hover .prod-img img{transform:scale(1.08);filter:brightness(1);}
+.prod-tag{position:absolute;top:16px;left:16px;font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;background:var(--azul);color:#fff;z-index:2;}
+.prod-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.95) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;z-index:1;}
+.prod-genre{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--azul);font-weight:700;margin-bottom:6px;}
+.prod-name-ov{font-family:'Bebas Neue',sans-serif;font-size:26px;}
+.prod-quick{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.prod-card:hover .prod-quick{opacity:1;}
+.prod-body{padding:22px 24px;background:var(--cinza2);}
+.prod-name{font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:4px;}
+.prod-desc{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+.prod-foot{display:flex;justify-content:space-between;align-items:center;}
+.prod-price{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--azul);}
+.btn-buy{
+  background:transparent;border:1px solid rgba(0,163,224,.4);color:var(--azul);
+  padding:9px 20px;font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .25s,box-shadow .25s;
+}
+.btn-buy:hover{background:rgba(0,163,224,.1);box-shadow:0 0 18px rgba(0,163,224,.2);}
+
+/* ── LOCALIZAÇÃO ── */
+.location{padding:100px 80px;background:var(--preto);}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:50px;align-items:stretch;}
+.map-wrap{position:relative;min-height:480px;overflow:hidden;}
+.map-wrap::after{content:'';position:absolute;inset:0;border:2px solid rgba(0,163,224,.25);pointer-events:none;z-index:2;}
+.map-wrap iframe{width:100%;height:100%;min-height:480px;border:none;display:block;filter:grayscale(30%) contrast(1.1);}
+.loc-info{display:flex;flex-direction:column;gap:3px;}
+.loc-card{background:var(--cinza);padding:36px 40px;flex:1;border-left:3px solid var(--azul);position:relative;overflow:hidden;}
+.loc-card::before{content:'';position:absolute;top:0;right:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--azul),transparent);}
+.loc-card-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--azul);font-weight:700;margin-bottom:14px;}
+.loc-card h3{font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:10px;}
+.loc-card p{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:16px;}
+.loc-meta{display:flex;gap:24px;flex-wrap:wrap;}
+.loc-meta span{font-size:13px;color:rgba(245,245,245,.6);}
+.loc-meta strong{color:var(--branco);}
+.loc-card-dark{background:var(--azul);padding:36px 40px;}
+.loc-card-dark h3{font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:14px;color:var(--preto);}
+.loc-hours{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;}
+.loc-hours div p:first-child{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(8,8,8,.55);margin-bottom:3px;}
+.loc-hours div p:last-child{font-size:15px;color:var(--preto);font-weight:700;}
+
+/* ── CONTATO ── */
+.contato{padding:100px 80px;background:var(--cinza);}
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1100px;margin:0 auto;}
+.contato-desc{color:rgba(245,245,245,.5);font-size:16px;line-height:1.8;margin:20px 0 40px;}
+.c-item{display:flex;align-items:center;gap:16px;margin-bottom:20px;color:rgba(245,245,245,.7);font-size:15px;}
+.c-icon{
+  width:44px;height:44px;background:var(--azul);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+}
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:30px;}
+.soc-link{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--preto);border:1px solid rgba(0,163,224,.12);transition:border-color .25s,background .25s;cursor:pointer;}
+.soc-link:hover{border-color:var(--azul);background:var(--cinza2);}
+.soc-icon{font-size:20px;flex-shrink:0;}
+.soc-label{font-size:12px;font-weight:700;color:var(--branco);display:block;}
+.soc-handle{font-size:11px;color:var(--muted);}
+form{display:flex;flex-direction:column;gap:20px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.fgrp{display:flex;flex-direction:column;gap:8px;}
+.flabel{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-weight:700;}
+.finput{
+  background:rgba(255,255,255,.03);border:1px solid rgba(0,163,224,.1);border-bottom:2px solid rgba(0,163,224,.25);
+  color:var(--branco);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:15px;outline:none;
+  transition:border-color .3s,box-shadow .3s;
+}
+.finput:focus{border-color:var(--azul);box-shadow:0 4px 20px rgba(0,163,224,.12);}
+.finput::placeholder{color:var(--muted);}
+textarea.finput{resize:vertical;min-height:130px;}
+.fselect{
+  appearance:none;background:rgba(255,255,255,.03);border:1px solid rgba(0,163,224,.1);border-bottom:2px solid rgba(0,163,224,.25);
+  color:var(--branco);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:15px;outline:none;cursor:pointer;
+  transition:border-color .3s;
+}
+.fselect:focus{border-color:var(--azul);}
+.fselect option{background:var(--cinza2);}
+.btn-enviar{
+  background:var(--azul);color:#fff;border:none;padding:18px;
+  font-family:'Barlow',sans-serif;font-size:12px;font-weight:900;letter-spacing:4px;text-transform:uppercase;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  transition:filter .25s,transform .2s,box-shadow .25s;margin-top:8px;
+}
+.btn-enviar:hover{filter:brightness(1.15);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,163,224,.35);}
+
+/* ── FOOTER ── */
+footer{background:#040404;padding:70px 80px 28px;border-top:1px solid rgba(0,163,224,.12);}
+footer::before{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,var(--azul),transparent);margin-bottom:60px;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:50px;}
+.ft-logo img{height:44px;width:auto;filter:invert(1);margin-bottom:20px;}
+.ft-desc{color:var(--muted);font-size:14px;line-height:1.8;max-width:240px;font-weight:300;}
+.ft-ht{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--azul);font-weight:700;margin-bottom:18px;}
+.ft-links li{margin-bottom:11px;}
+.ft-links a{color:var(--muted);font-size:14px;transition:color .25s,padding-left .25s;}
+.ft-links a:hover{color:var(--branco);padding-left:6px;}
+.ft-bot{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;display:flex;justify-content:space-between;color:var(--muted);font-size:13px;}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(8,8,8,.92);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.modal.on{display:flex;}
+.modal-box{
+  background:var(--cinza2);padding:50px 60px;text-align:center;max-width:440px;
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
+  animation:pop .35s cubic-bezier(.34,1.56,.64,1);border-top:2px solid var(--azul);
+}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-ico{font-size:52px;margin-bottom:18px;}
+.modal-t{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--azul);margin-bottom:12px;}
+.modal-p{color:var(--muted);font-size:15px;line-height:1.6;margin-bottom:28px;}
+.modal-close{background:var(--azul);color:#fff;border:none;padding:14px 34px;font-family:'Barlow',sans-serif;font-weight:900;font-size:11px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:filter .2s;}
+.modal-close:hover{filter:brightness(1.2);}
+
+/* TOAST */
+.toast{position:fixed;bottom:36px;right:36px;z-index:9001;background:var(--azul);color:#fff;padding:14px 26px;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;pointer-events:none;opacity:0;transform:translateY(16px);transition:opacity .4s,transform .4s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+.toast.on{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  header{padding:0 20px;}nav{display:none;}
+  .hero-body{padding:0 24px;}
+  .about{grid-template-columns:1fr;}.about-img{min-height:300px;}
+  .video-section,.produtos,.location,.contato{padding:60px 20px;}
+  .prod-grid{grid-template-columns:1fr;}
+  .loc-grid,.contato-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  .social-grid{grid-template-columns:1fr;}
+  footer{padding:50px 20px 20px;}.ft{grid-template-columns:1fr 1fr;gap:30px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="logo-wrap">
+    <a href="#home">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas"
+           onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/200px-Adidas_Logo.svg.png'">
+    </a>
+  </div>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#video">Campanha</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#loja">Lojas</a>
+    <a href="#contato">Contato</a>
+    <a href="#produtos" class="btn-nav">Comprar</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-over"></div>
+  <div class="hero-stripes"><span></span><span></span><span></span></div>
+  <div class="hero-body">
+    <p class="kicker">Nova Coleção 2025</p>
+    <h1 class="hero-title">IMPOSSIBLE<br>IS<br><span>NOTHING.</span></h1>
+    <p class="hero-sub">Performance que desafia limites. Estilo que define gerações. A Adidas está em cada passo da sua jornada.</p>
+    <div class="btns">
+      <a href="#produtos" class="btn-p">Ver Coleção</a>
+      <a href="#video" class="btn-g">Ver Campanha</a>
+    </div>
+  </div>
+  <span class="hero-scroll">scroll</span>
+</section>
+
+<!-- SOBRE -->
+<div class="about" id="sobre">
+  <div class="about-txt">
+    <p class="sec-label">Nossa História</p>
+    <h2 class="sec-title">Feito Para<br><span>Superar.</span></h2>
+    <p class="about-body">Desde 1949, a Adidas equipa atletas que recusam o impossível. Com tecnologias como Boost, Primeknit e 4D, cada produto é uma declaração: o limite é onde você decide parar. Porque Impossible Is Nothing.</p>
+    <div class="about-stats">
+      <div class="a-stat"><p>75+</p><p>Anos de Inovação</p></div>
+      <div class="a-stat"><p>160</p><p>Países Presentes</p></div>
+      <div class="a-stat"><p>#1</p><p>Esporte & Estilo</p></div>
+    </div>
+  </div>
+  <div class="about-img"></div>
+</div>
+
+<!-- VÍDEO -->
+<section class="video-section" id="video">
+  <p class="sec-label">Campanha Oficial</p>
+  <h2 class="sec-title">Impossible Is<br><span>Nothing.</span></h2>
+
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/I6AxpJHSiY0?rel=0&modestbranding=1&color=white"
+      title="Adidas — Impossible Is Nothing"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="video-caption">Adidas · <strong>"Impossible Is Nothing"</strong> · Campanha Oficial Global</p>
+</section>
+
+<!-- PRODUTOS -->
+<section class="produtos" id="produtos">
+  <p class="sec-label">Coleção 2025</p>
+  <h2 class="sec-title">Nossos<br><span>Produtos</span></h2>
+  <ul class="prod-grid">
+
+    <li class="prod-card">
+      <div class="prod-img">
+        <span class="prod-tag">🔥 Bestseller</span>
+        <img
+          src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=80&auto=format&fit=crop"
+          alt="Adidas Ultraboost 24"
+          style="width:100%;height:100%;object-fit:cover;"
+          onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop';this.onerror=null">
+        <div class="prod-overlay">
+          <p class="prod-genre">Running · Boost</p>
+          <h3 class="prod-name-ov">Ultraboost 24</h3>
+        </div>
+        <div class="prod-quick"><button class="btn-buy" onclick="addCart('Adidas Ultraboost 24')">+ Adicionar</button></div>
+      </div>
+      <div class="prod-body">
+        <h2 class="prod-name">Adidas Ultraboost 24</h2>
+        <p class="prod-desc">Tecnologia Boost de última geração. O tênis de corrida mais responsivo da Adidas.</p>
+        <div class="prod-foot">
+          <span class="prod-price">R$ 1.099,00</span>
+          <button class="btn-buy" onclick="addCart('Adidas Ultraboost 24')">Comprar</button>
+        </div>
+      </div>
+    </li>
+
+    <li class="prod-card">
+      <div class="prod-img">
+        <span class="prod-tag" style="background:var(--preto);color:var(--azul);border:1px solid var(--azul);">✦ Clássico</span>
+        <img
+          src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=600&q=80&auto=format&fit=crop"
+          alt="Adidas Stan Smith"
+          style="width:100%;height:100%;object-fit:cover;"
+          onerror="this.src='https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&q=80&auto=format&fit=crop';this.onerror=null">
+        <div class="prod-overlay">
+          <p class="prod-genre">Lifestyle · Originals</p>
+          <h3 class="prod-name-ov">Stan Smith Lux</h3>
+        </div>
+        <div class="prod-quick"><button class="btn-buy" onclick="addCart('Stan Smith Lux')">+ Adicionar</button></div>
+      </div>
+      <div class="prod-body">
+        <h2 class="prod-name">Stan Smith Lux</h2>
+        <p class="prod-desc">O ícone atemporal em versão premium. Couro full-grain italiano, detalhe verde icônico.</p>
+        <div class="prod-foot">
+          <span class="prod-price">R$ 899,00</span>
+          <button class="btn-buy" onclick="addCart('Stan Smith Lux')">Comprar</button>
+        </div>
+      </div>
+    </li>
+
+    <li class="prod-card">
+      <div class="prod-img">
+        <span class="prod-tag">⚡ Destaque</span>
+        <img
+          src="https://images.unsplash.com/photo-1556906781-9a412961a28c?w=600&q=80&auto=format&fit=crop"
+          alt="Adidas Superstar OG"
+          style="width:100%;height:100%;object-fit:cover;"
+          onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop';this.onerror=null">
+        <div class="prod-overlay">
+          <p class="prod-genre">Originals · Street</p>
+          <h3 class="prod-name-ov">Superstar OG</h3>
+        </div>
+        <div class="prod-quick"><button class="btn-buy" onclick="addCart('Adidas Superstar OG')">+ Adicionar</button></div>
+      </div>
+      <div class="prod-body">
+        <h2 class="prod-name">Adidas Superstar OG</h2>
+        <p class="prod-desc">Desde 1969 nas quadras e nas ruas. O Superstar é cultura, é atitude, é Adidas.</p>
+        <div class="prod-foot">
+          <span class="prod-price">R$ 749,00</span>
+          <button class="btn-buy" onclick="addCart('Adidas Superstar OG')">Comprar</button>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section class="location" id="loja">
+  <p class="sec-label">Onde Estamos</p>
+  <h2 class="sec-title">Nossas<br><span>Lojas</span></h2>
+  <div class="loc-grid">
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3!2d-46.6661!3d-23.5621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59bf4c481f87%3A0x5e7b7f0e89a1a6c0!2sAdidas%20Store%20Pinheiros!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Adidas Store São Paulo">
+      </iframe>
+    </div>
+    <div class="loc-info">
+      <div class="loc-card">
+        <p class="loc-card-label">📍 Loja Principal</p>
+        <h3>Adidas Store Pinheiros</h3>
+        <p>Rua dos Pinheiros, 498<br>Pinheiros — São Paulo, SP<br>CEP 05422-000</p>
+        <div class="loc-meta">
+          <span>📞 <strong>(11) 3062-8800</strong></span>
+          <span>🌐 <strong>adidas.com.br</strong></span>
+        </div>
+      </div>
+      <div class="loc-card">
+        <p class="loc-card-label">📍 Filial Rio de Janeiro</p>
+        <h3>Adidas Store Barra</h3>
+        <p>Av. das Américas, 4666<br>Barra da Tijuca — Rio de Janeiro, RJ<br>CEP 22640-102</p>
+        <div class="loc-meta">
+          <span>📞 <strong>(21) 2430-5500</strong></span>
+          <span>🌐 <strong>adidas.com.br</strong></span>
+        </div>
+      </div>
+      <div class="loc-card-dark">
+        <h3>Horário de Funcionamento</h3>
+        <div class="loc-hours">
+          <div><p>Segunda a Sexta</p><p>10h às 22h</p></div>
+          <div><p>Sábado</p><p>10h às 22h</p></div>
+          <div><p>Domingo</p><p>12h às 20h</p></div>
+          <div><p>Feriados</p><p>12h às 20h</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <p class="sec-label">Fale Conosco</p>
+  <h2 class="sec-title">Entre Em<br><span>Contato.</span></h2>
+  <div class="contato-grid">
+
+    <!-- Info -->
+    <div>
+      <p class="contato-desc">Dúvidas sobre produtos, pedidos ou parcerias? Nossa equipe está pronta para te atender.</p>
+      <div class="c-item"><div class="c-icon">📍</div><span>Rua dos Pinheiros, 498 — São Paulo, SP</span></div>
+      <div class="c-item"><div class="c-icon">📞</div><span>(11) 3062-8800 · 0800 722 3428</span></div>
+      <div class="c-item"><div class="c-icon">✉️</div><span>atendimento@adidas.com.br</span></div>
+      <div class="c-item"><div class="c-icon">⏰</div><span>Seg–Sex 9h às 21h · Sáb 9h às 18h</span></div>
+
+      <div class="social-grid">
+        <a class="soc-link" href="https://instagram.com/adidas" target="_blank">
+          <span class="soc-icon">📸</span>
+          <div><span class="soc-label">Instagram</span><span class="soc-handle">@adidas</span></div>
+        </a>
+        <a class="soc-link" href="https://twitter.com/adidas" target="_blank">
+          <span class="soc-icon">𝕏</span>
+          <div><span class="soc-label">Twitter / X</span><span class="soc-handle">@adidas</span></div>
+        </a>
+        <a class="soc-link" href="https://youtube.com/adidas" target="_blank">
+          <span class="soc-icon">▶️</span>
+          <div><span class="soc-label">YouTube</span><span class="soc-handle">Adidas</span></div>
+        </a>
+        <a class="soc-link" href="https://facebook.com/adidas" target="_blank">
+          <span class="soc-icon">📘</span>
+          <div><span class="soc-label">Facebook</span><span class="soc-handle">/adidas</span></div>
+        </a>
+        <a class="soc-link" href="https://tiktok.com/@adidas" target="_blank">
+          <span class="soc-icon">🎵</span>
+          <div><span class="soc-label">TikTok</span><span class="soc-handle">@adidas</span></div>
+        </a>
+        <a class="soc-link" href="https://wa.me/5511930628800" target="_blank">
+          <span class="soc-icon">💬</span>
+          <div><span class="soc-label">WhatsApp</span><span class="soc-handle">Atendimento</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Formulário -->
+    <form onsubmit="enviarContato(event)">
+      <div class="frow">
+        <div class="fgrp">
+          <label class="flabel">Nome</label>
+          <input type="text" class="finput" placeholder="Seu nome" required>
+        </div>
+        <div class="fgrp">
+          <label class="flabel">Sobrenome</label>
+          <input type="text" class="finput" placeholder="Sobrenome" required>
+        </div>
+      </div>
+      <div class="fgrp">
+        <label class="flabel">E-mail</label>
+        <input type="email" class="finput" placeholder="seu@email.com" required>
+      </div>
+      <div class="fgrp">
+        <label class="flabel">Telefone</label>
+        <input type="tel" class="finput" placeholder="(11) 99999-0000">
+      </div>
+      <div class="fgrp">
+        <label class="flabel">Assunto</label>
+        <select class="finput fselect">
+          <option value="">Selecione o assunto</option>
+          <option>Dúvida sobre produto</option>
+          <option>Rastreio de pedido</option>
+          <option>Troca ou devolução</option>
+          <option>Disponibilidade de produto</option>
+          <option>Parcerias e patrocínios</option>
+          <option>Suporte técnico</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="fgrp">
+        <label class="flabel">Mensagem</label>
+        <textarea class="finput" placeholder="Como podemos ajudar?"></textarea>
+      </div>
+      <button type="submit" class="btn-enviar">Enviar Mensagem →</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" onerror="this.style.display='none'">
+      <p class="ft-desc">Inspirando atletas e criadores desde 1949. Porque Impossible Is Nothing — sempre foi, sempre será.</p>
+    </div>
+    <div>
+      <p class="ft-ht">Produtos</p>
+      <ul class="ft-links">
+        <li><a href="#produtos">Tênis</a></li>
+        <li><a href="#produtos">Roupas</a></li>
+        <li><a href="#produtos">Acessórios</a></li>
+        <li><a href="#produtos">Originals</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ft-ht">Empresa</p>
+      <ul class="ft-links">
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Imprensa</a></li>
+        <li><a href="#">Investidores</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="ft-ht">Ajuda</p>
+      <ul class="ft-links">
+        <li><a href="#contato">Fale Conosco</a></li>
+        <li><a href="#loja">Nossas Lojas</a></li>
+        <li><a href="#">Trocas</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2025 Adidas AG. Todos os direitos reservados.</span>
+    <span>Privacidade · Termos · Cookies</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-ico">✅</div>
+    <h3 class="modal-t" id="modal-t">Adicionado!</h3>
+    <p class="modal-p" id="modal-msg">Produto adicionado à sua sacola com sucesso.</p>
+    <button class="modal-close" onclick="closeModal()">Continuar</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// Video — abre no YouTube
+function openVideo(){
+  window.open('https://www.youtube.com/watch?v=zAGVQLHvwOY','_blank');
+}
+
+// Header scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('hdr').style.background=
+    window.scrollY>60?'rgba(8,8,8,1)':'rgba(8,8,8,.95)';
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+
+// Cart
+function addCart(nome){
+  document.getElementById('modal-t').textContent='Adicionado!';
+  document.getElementById('modal-msg').textContent=`"${nome}" foi adicionado à sua sacola com sucesso.`;
+  document.getElementById('modal').classList.add('on');
+}
+function closeModal(){document.getElementById('modal').classList.remove('on');}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+
+// Contato
+function enviarContato(e){
+  e.preventDefault();
+  document.getElementById('modal-t').textContent='Mensagem Enviada!';
+  document.getElementById('modal-msg').textContent='Recebemos seu contato. Nossa equipe responderá em até 24 horas.';
+  document.getElementById('modal').classList.add('on');
+  e.target.reset();
+}
+
+// Hover cards
+document.querySelectorAll('.prod-card img').forEach(img=>{
+  img.parentElement.parentElement.addEventListener('mouseenter',()=>img.style.filter='brightness(1)');
+  img.parentElement.parentElement.addEventListener('mouseleave',()=>img.style.filter='brightness(.8)');
+});
+
+// Toast
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),2800);
+}
+</script>
+</body>
+</html>
